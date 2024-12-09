@@ -14,7 +14,7 @@ type apiProps ={
 }
 
 
-const CarouselSizes = async ({categorie, type} : apiProps) => {
+const ActorCarouselSizes = async ({categorie, type} : apiProps) => {
 const dataPop = await fetchMovies(`/${type}/${categorie}?language=en-US&page=1`)
 
   return (
@@ -28,8 +28,8 @@ const dataPop = await fetchMovies(`/${type}/${categorie}?language=en-US&page=1`)
         {Array.from({ length: 10 }).map((_, index) => (
           <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/5 ">
             <div className="p-1">
-              <Card className="bg-center bg-cover bg-no-repeat h-[150px]" style={{backgroundImage : `url(https://image.tmdb.org/t/p/original/${dataPop.results[index + 1].backdrop_path})`}}>
-                <CardContent className="flex items-center justify-center p-1">
+              <Card className="bg-center bg-cover bg-no-repeat h-[200px] " style={{backgroundImage : `url(https://image.tmdb.org/t/p/original/${dataPop.results[index + 1].profile_path})`}}>
+                <CardContent className="flex items-center justify-center p-2">
                   <span className="text-xl font-semibold">{index + 1}</span>
                 </CardContent>
               </Card>
@@ -43,4 +43,4 @@ const dataPop = await fetchMovies(`/${type}/${categorie}?language=en-US&page=1`)
   )
 }
 
-export default CarouselSizes
+export default ActorCarouselSizes

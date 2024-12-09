@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { Input } from "./ui/input"
 import { SearchIcon } from "lucide-react"
+import DarkToggle from "./DarkToggle"
 
 const Navbar = () => {
     return(
@@ -10,7 +11,7 @@ const Navbar = () => {
                 <Input type="search" placeholder="Search..."/>
                 <SearchIcon/>
             </section>
-            <div className="w-10"></div>
+            <DarkToggle/>
         </nav>
     )
 }
