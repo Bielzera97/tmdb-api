@@ -1,6 +1,12 @@
 import { fetchMovies } from "@/services/apiTmdb";
 
-export default async function MoviePage({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
+export default async function MoviePage({ params }: PageProps) {
   const data = await fetchMovies(`/movie/${params.id}?language=pt-BR`);
 
   console.log(data)
