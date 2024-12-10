@@ -2,7 +2,7 @@ import { fetchMovies } from "@/services/apiTmdb";
 
 interface PageProps {
   params: {
-    id: string;
+    id: number;
   };
 }
 
