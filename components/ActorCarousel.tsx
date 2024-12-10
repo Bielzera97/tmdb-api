@@ -7,6 +7,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { fetchMovies } from "@/services/apiTmdb";
+import Link from "next/link";
 
 type apiProps ={
     type : string,
@@ -29,8 +30,8 @@ const dataPop = await fetchMovies(`/${type}/${categorie}?language=en-US&page=1`)
           <CarouselItem key={index} className="md:basis-1/3 lg:basis-1/5 ">
             <div className="p-1">
               <Card className="bg-center bg-cover bg-no-repeat h-[200px] " style={{backgroundImage : `url(https://image.tmdb.org/t/p/original/${dataPop.results[index + 1].profile_path})`}}>
-                <CardContent className="flex items-center justify-center p-2">
-                  <span className="text-xl font-semibold">{index + 1}</span>
+                <CardContent className="flex ">
+                  <span className="text-xl font-semibold"><Link href={`/actor/${dataPop.results[index + 1].id}`}>{dataPop.results[index + 1].name}</Link></span>
                 </CardContent>
               </Card>
             </div>

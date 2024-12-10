@@ -65,3 +65,7 @@
   }
 }
 
+.botao:hover{
+  background-color: #ffffff0b;
+  transition: all 0.1s;
+}
