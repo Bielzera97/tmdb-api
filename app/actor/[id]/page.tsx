@@ -17,6 +17,9 @@ export async function generateStaticParams() {
   }));
 }
 
+// Tempo de revalidação em segundos (ex.: 3600 segundos = 1 hora)
+export const revalidate = 3600; // Regenera a página a cada 1 hora
+
 // Página dinâmica para exibir informações de uma pessoa
 export default async function MoviePage({ params }: PageProps) {
   const { id } = params;
