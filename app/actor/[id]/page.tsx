@@ -1,10 +1,5 @@
 import { fetchMovies } from "@/services/apiTmdb";
-
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
+import { InferGetStaticPropsType } from "next";
 
 // Função para gerar os parâmetros estáticos
 export async function generateStaticParams() {
@@ -20,8 +15,11 @@ export async function generateStaticParams() {
 // Tempo de revalidação em segundos (ex.: 3600 segundos = 1 hora)
 export const revalidate = 3600; // Regenera a página a cada 1 hora
 
+// Tipagem das props do componente utilizando InferGetStaticPropsType
+type MoviePageProps = InferGetStaticPropsType<typeof generateStaticParams>;
+
 // Página dinâmica para exibir informações de uma pessoa
-export default async function MoviePage({ params }: PageProps) {
+export default async function MoviePage({ params }: MoviePageProps) {
   const { id } = params;
 
   // Busca os dados detalhados da pessoa

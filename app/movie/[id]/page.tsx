@@ -1,10 +1,5 @@
 import { fetchMovies } from "@/services/apiTmdb";
-
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
+import { InferGetStaticPropsType } from "next";
 
 export async function generateStaticParams() {
   const data = await fetchMovies(`/movie/popular?language=pt-BR`);
@@ -14,9 +9,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export const revalidate = 60; // Regenera a página a cada 60 segundos
+type MoviePageProps = InferGetStaticPropsType<typeof generateStaticParams>;
 
-export default async function MoviePage({ params }: PageProps) {
+export default async function MoviePage({ params }: MoviePageProps) {
   const { id } = params;
 
   const data = await fetchMovies(`/movie/${id}?language=pt-BR`);
