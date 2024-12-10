@@ -8,11 +8,11 @@ import Link from "next/link";
 
 export default async function Home() {
   const data = await fetchMovies('/movie/popular?language=pt-BR&page=1')
-  console.log(data)
+  
   return (
     <main className="" >
-      <section className="grid grid-cols-3 gap-2 px-8 ">
-      <Card className="h-[316px] col-span-2 bg-center bg-cover bg-no-repeat flex flex-col justify-end" style={{backgroundImage : `url(https://image.tmdb.org/t/p/original/${data.results[0].backdrop_path})`}}>
+      <section className="grid grid-cols-3 gap-2 px-8 py-5 ">
+      <Card className="h-[355px] col-span-2 bg-center bg-cover bg-no-repeat flex flex-col justify-end" style={{backgroundImage : `url(https://image.tmdb.org/t/p/original/${data.results[0].backdrop_path})`}}>
         <CardContent>
           <h1>{data.results[0].title}</h1>
           <h1 className="flex items-center"><Star/> {}{data.results[0].vote_average} | {data.results[0].vote_count}</h1>
@@ -21,6 +21,7 @@ export default async function Home() {
         </CardContent>
       </Card>
       <section className="col-span-1 flex flex-col gap-2">
+        <h1 className="border-l-4 border-[white] pl-1 text-lg font-semibold">Destaques Também</h1>
         <Card className="h-[100px] flex flex-col justify-between bg-center bg-cover bg-no-repeat" style={{backgroundImage : `url(https://image.tmdb.org/t/p/original/${data.results[1].backdrop_path})`}}>
            <h1 className="flex items-center"><Star/>{data.results[1].vote_average}</h1>
            <section>
@@ -45,8 +46,11 @@ export default async function Home() {
       </section>
       </section>
       <section className="w-full max-h-screen flex flex-col gap-4 pt-4 ">
+        <h1 className="border-l-4 border-[white] pl-1 text-lg font-semibold ml-10">Top Rated</h1>
         <CarouselSizes type="movie" categorie="top_rated" />
+        <h1 className="border-l-4 border-[white] pl-1 text-lg font-semibold ml-10">Upcoming</h1>
         <CarouselSizes type="movie" categorie="upcoming" />
+        <h1 className="border-l-4 border-[white] pl-1 text-lg font-semibold ml-10">Actors</h1>
         <ActorCarouselSizes type="person" categorie="popular" />
       </section>
 
