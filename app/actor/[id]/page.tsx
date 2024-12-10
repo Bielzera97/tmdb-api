@@ -7,7 +7,8 @@ interface PageProps {
 }
 
 export default async function MoviePage({ params }: PageProps) {
-  const data = await fetchMovies(`/person/${params.id}?language=pt-BR`);
+  const {id} = params
+  const data = await fetchMovies(`/person/${id}?language=pt-BR`);
 
   console.log(data)
   return (
